@@ -1,0 +1,38 @@
+CREATE DATABASE employee
+use employee 
+CREATE TABLE departments(department_id INT	PRIMARY KEY ,department_name VARCHAR(100));
+CREATE TABLE location (location_id INT PRIMARY KEY ,location VARCHAR (50)); 
+CREATE TABLE employees (employee_id INT PRIMARY KEY ,employee_name VARCHAR(50),gender ENUM ("m","f"),age INT ,hire_date DATE ,designation VARCHAR (100) ,department_id INT ,location_id INT ,salary DECIMAL(10,2),FOREIGN KEY (location_id ) REFERENCES location(location_id));
+ALTER TABLE employees ADD email VARCHAR (100) ;
+ALTER TABLE employees MODIFY designation VARCHAR (200);
+ALTER TABLE employees DROP COLUMN age;
+ALTER TABLE employees RENAME COLUMN hire_date TO date_of_joining;
+SHOW TABLES ;
+RENAME TABLE departments TO Department_info;
+RENAME TABLE location TO Locations;
+TRUNCATE TABLE employees;
+SHOW TABLES ;
+DROP TABLE employees;
+DROP DATABASE employee;
+CREATE DATABASE employee;
+USE employee ;
+CREATE TABLE departments(department_id INT	PRIMARY KEY ,department_name VARCHAR(100));
+CREATE TABLE location (location_id INT PRIMARY KEY ,location VARCHAR (50)); 
+CREATE TABLE employees (employee_id INT PRIMARY KEY ,employee_name VARCHAR(50),gender ENUM ("m","f"),age INT ,hire_date DATE ,designation VARCHAR (100) ,department_id INT ,location_id INT ,salary DECIMAL(10,2),FOREIGN KEY (location_id ) REFERENCES location(location_id));
+SHOW DATABASES ;
+USE employee ; SHOW TABLES ;
+DESC departments;DESC location;DESC employees;
+ALTER TABLE departments ADD PRIMARY KEY (department_id);
+ALTER TABLE departments MODIFY department_name VARCHAR(100) NOT NULL UNIQUE;
+SHOW CREATE TABLE departments;
+ALTER TABLE employees ADD PRIMARY KEY (employee_id);
+SHOW CREATE TABLE employees;
+ALTER TABLE employees MODIFY employee_name VARCHAR(50) NOT NULL;
+ALTER TABLE employees MODIFY gender ENUM ("M","F");
+ALTER TABLE employees ADD CONSTRAINT chk_age CHECK (age>= 18 );
+ALTER TABLE employees MODIFY hire_date DATE DEFAULT (CURRENT_DATE );
+ALTER TABLE employees ADD CONSTRAINT fk_department FOREIGN KEY (department_id ) REFERENCES departments (department_id) ;
+ALTER TABLE employees ADD CONSTRAINT fk_location FOREIGN KEY (location_id ) REFERENCES location (location_id) ;
+SHOW CREATE TABLE employees;
+SELECT * FROM employees;
+USE employee; DESC employees;
